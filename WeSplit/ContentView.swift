@@ -50,7 +50,8 @@ struct ContentView: View {
                         }
                     }
                     
-                    .pickerStyle(.segmented)
+                    .pickerStyle(.navigationLink)
+
                 }
                 
                 Section("Total bill amount"){
