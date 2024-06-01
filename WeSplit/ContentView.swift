@@ -14,11 +14,15 @@ struct ContentView: View {
     @FocusState private var amountIsFocused: Bool
     let tipPercentages = [10, 15, 20, 25, 0]
     
+    var totalAmount:  Double
+    {
+        return Double(checkAmount)*(1 + Double(tipPercentage)/100)
+    }
     var perperson : Double
     {
-        let a = Double(checkAmount)*(1 + Double(tipPercentage)/100)
+        
         let totalpeople  = Double(numberOfPeople) + 2
-        let perperson = a/totalpeople
+        let perperson = totalAmount/totalpeople
         return perperson
     }
     
@@ -47,6 +51,10 @@ struct ContentView: View {
                         }
                     }
                     .pickerStyle(.segmented)
+                }
+                
+                Section("Total bill amount"){
+                    Text(totalAmount, format: .currency(code: Locale.current.currency? .identifier ?? "USD"))
                 }
                 Section("Amount each person has to pay"){
                     Text(perperson, format: .currency(code: Locale.current.currency? .identifier ?? "USD"))
