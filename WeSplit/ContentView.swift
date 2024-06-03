@@ -52,10 +52,12 @@ struct ContentView: View {
                     
                     .pickerStyle(.navigationLink)
 
+                    
                 }
                 
                 Section("Total bill amount"){
                     Text(totalAmount, format: .currency(code: Locale.current.currency? .identifier ?? "USD"))
+                        .foregroundStyle(tipPercentage == 0 ? .red : .black)
                 }
                 Section("Amount each person has to pay"){
                     Text(perperson, format: .currency(code: Locale.current.currency? .identifier ?? "USD"))
